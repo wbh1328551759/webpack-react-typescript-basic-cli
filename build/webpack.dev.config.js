@@ -25,5 +25,5 @@ module.exports = merge(baseConfig, {
   plugins: [
     ...baseConfig.plugins,
     new BundleAnalyzerPlugin()
-  ]
+  ],
 })

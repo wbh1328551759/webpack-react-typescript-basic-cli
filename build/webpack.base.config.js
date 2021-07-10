@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMiniWebpackPlugin= require('css-minimizer-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -14,7 +13,8 @@ module.exports = {
     chunkFilename: '[name].[chunkhash:8].js',
     path: path.resolve(rootDir, 'dist'),
     filename: 'bundle.[contenthash:8].js',
-    publicPath: ''
+    publicPath: '',
+    clean: true
   },
   module: {
     rules: [
@@ -76,7 +76,6 @@ module.exports = {
         collapseWhitespace:true    //删除空白符与换行符
       }
     }),
-    new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         {
