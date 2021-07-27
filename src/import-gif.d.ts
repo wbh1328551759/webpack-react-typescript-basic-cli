@@ -1,5 +1,7 @@
-declare module '*.gif' {
-  const content: any;
+/** @format */
 
-  export default content;
+declare module '*.gif' {
+  const content: any
+
+  export default content
 }
