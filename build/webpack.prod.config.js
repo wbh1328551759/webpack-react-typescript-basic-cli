@@ -1,5 +1,6 @@
 const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.base.config');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 
 module.exports = merge(baseConfig, {
   mode: 'production',
@@ -9,5 +10,14 @@ module.exports = merge(baseConfig, {
     buildDependencies: {
       config: [__filename]
     }
-  }
+  },
+  plugins: [
+    ...baseConfig.plugins,
+    new CompressionWebpackPlugin({
+      algorithm: 'gzip',
+      test: new RegExp('\\.(js|css)$'),
+      minRatio: 0.8,
+      deleteOriginalAssets: false
+    })
+  ]
 });
