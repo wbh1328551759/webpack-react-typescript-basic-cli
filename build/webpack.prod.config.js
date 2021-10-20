@@ -1,14 +1,16 @@
-const { merge } = require('webpack-merge');
-const baseConfig = require('./webpack.base.config');
+/** @format */
+
+const {merge} = require('webpack-merge')
+const baseConfig = require('./webpack.base.config')
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 
 module.exports = merge(baseConfig, {
   mode: 'production',
-  devtool: 'hidden-source-map',
+  devtool: false,
   cache: {
     type: 'filesystem',
     buildDependencies: {
-      config: [__filename]
+      config: [__filename],
     }
   },
   plugins: [
@@ -18,6 +20,6 @@ module.exports = merge(baseConfig, {
       test: new RegExp('\\.(js|css)$'),
       minRatio: 0.8,
       deleteOriginalAssets: false
-    })
+    }),
   ]
 });

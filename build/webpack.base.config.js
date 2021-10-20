@@ -41,7 +41,6 @@ module.exports = {
       },
       {
         test: /\.(s[ac]ss|css)$/i,
-        exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
           'thread-loader',
