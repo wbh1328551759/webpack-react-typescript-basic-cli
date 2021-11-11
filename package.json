@@ -20,6 +20,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.3.1",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
     "autoprefixer": "^10.2.6",
@@ -74,6 +75,9 @@
     "lint": "eslint src --fix --ext .ts,.tsx "
   },
   "dependencies": {
+    "@babel/runtime": "^7.14.6",
+    "@babel/runtime-corejs3": "^7.14.7",
+    "antd": "^4.16.13",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

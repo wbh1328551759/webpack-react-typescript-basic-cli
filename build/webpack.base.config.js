@@ -24,23 +24,21 @@ module.exports = {
         use: [
           {
             loader: 'thread-loader',
-            options: {
-            }
+            options: {},
           },
           'babel-loader',
           {
             loader: 'ts-loader',
             options: {
               happyPackMode: true,
-              transpileOnly: true
-            }
-          }
+              transpileOnly: true,
+            },
+          },
         ],
         exclude: /node_modules/,
       },
       {
         test: /\.(s[ac]ss|css)$/i,
-        exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
           'thread-loader',
@@ -50,19 +48,17 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [
-                  ["autoprefixer"],
-                ],
+                plugins: [['autoprefixer']],
               },
             },
-          }
-        ]
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif|jpeg|webp|svg|eot|ttf|woff|woff2)$/,
         type: 'asset',
       },
-    ]
+    ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
@@ -86,7 +82,7 @@ module.exports = {
       patterns: [
         {
           from: '*.js',
-          context: path.resolve(rootDir, "public/js"),
+          context: path.resolve(rootDir, 'public/js'),
           to: path.resolve(rootDir, 'dist/js'),
         },
       ],
