@@ -5,6 +5,7 @@ const CssMiniWebpackPlugin= require('css-minimizer-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const rootDir = process.cwd();
+const WebpackBar = require('webpackbar')
 
 module.exports = {
   entry: './src/index.tsx',
@@ -13,7 +14,7 @@ module.exports = {
     chunkFilename: '[name].[chunkhash:8].js',
     path: path.resolve(rootDir, 'dist'),
     filename: 'bundle.[contenthash:8].js',
-    publicPath: '',
+    publicPath: '/',
     clean: true
   },
   module: {
@@ -65,6 +66,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      crypto: false,
+      'react/jsx-runtime': require.resolve('react/jsx-runtime')
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -74,7 +79,8 @@ module.exports = {
       minify:{ //压缩HTML文件
         removeComments:true,    //移除HTML中的注释
         collapseWhitespace:true    //删除空白符与换行符
-      }
+      },
+      favicon: path.resolve(rootDir, 'public/favicon.svg')
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -90,10 +96,10 @@ module.exports = {
     }),
     new CssMiniWebpackPlugin(),
     new webpack.optimize.SplitChunksPlugin(),
+    new WebpackBar(),
+    new webpack.ProvidePlugin({
+      process: 'process/browser.js',
+      Buffer: ['buffer', 'Buffer']
+    }),
   ],
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
-  },
 }

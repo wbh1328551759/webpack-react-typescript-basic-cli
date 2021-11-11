@@ -1,6 +1,6 @@
 const { merge } = require('webpack-merge')
 const baseConfig = require('./webpack.base.config')
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = merge(baseConfig, {
   mode: 'development',
@@ -18,12 +18,13 @@ module.exports = merge(baseConfig, {
         },
       },
     },
+    historyApiFallback: true
   },
   cache: {
     type: 'memory'
   },
   plugins: [
     ...baseConfig.plugins,
-    new BundleAnalyzerPlugin()
+    new ReactRefreshWebpackPlugin()
   ],
 })
