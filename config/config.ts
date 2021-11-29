@@ -1,9 +1,11 @@
-let serverUrl: string;
+let apiUrl: string;
 
-if (process.env.NODE_ENV === 'development') {
-  serverUrl = 'http://test-server-pre.com';
-} else if (process.env.NODE_ENV === 'production') {
-  serverUrl = 'http://test-server.com';
+const apiUrlMap: {[key: string]: string} = {
+  dev: 'https://server-pre.com/api',
+  pre: 'https://server-pre.com/api',
+  prod: 'https://server.com/api',
 }
 
-export default serverUrl;
+apiUrl = apiUrlMap[process.env.API_ENV]
+
+export default apiUrl;

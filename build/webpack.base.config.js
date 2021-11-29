@@ -97,5 +97,9 @@ module.exports = {
       process: 'process/browser.js',
       Buffer: ['buffer', 'Buffer']
     }),
+    new webpack.DefinePlugin({
+      "process.env.API_ENV": JSON.stringify(process.env.API_ENV),
+      API_ENV: JSON.stringify(process.env.API_ENV)
+    })
   ],
 }
